@@ -1,0 +1,176 @@
+.auth_form {
+    margin: 50px auto auto auto;
+    background-color: WhiteSmoke;
+    border: 1px solid Gainsboro;
+    border-radius: 10px;
+    width: 330px;
+    padding: 20px;
+}
+
+.auth_form_input {
+    width: 290px;
+    margin-bottom: 15px;
+}
+
+.auth_form_btn {
+    margin-top: 10px;
+    width: 290px;
+    height: 35px;
+    background-color: MediumSeaGreen;
+    border-radius: 5px;
+    border: None;
+    color: white;
+}
+
+.auth_form_btn:hover {
+    background-color: SeaGreen;
+}
+
+.auth_form_btn:active {
+    background-color: MediumSeaGreen;
+}
+
+.auth_form_output{
+    margin-top: 10px;
+    min-height: 27px;
+    text-align: center;
+    color: rosybrown;
+}
+
+.header {
+    background-color: RoyalBlue;
+    padding: 7px 7px 13px 7px;
+    color: white;
+}
+
+.header_title {
+    padding: 0px 15px 0px 15px;
+    font-size: 20px;
+    border-right: 1px solid white;
+    display: inline-block;
+}
+
+.header_icon {
+    background-color: RoyalBlue; 
+    margin: 0px 0px 0px 20px;
+    padding: 5px 7px 10px 7px;
+    border-radius: 30px;
+}
+
+.header_icon:hover {
+    background-color: DodgerBlue; 
+}
+
+.header_icon:active {
+    background-color: RoyalBlue; 
+}
+
+.icon_save_table_data {
+    background-color: SeaGreen; 
+    padding-bottom: 4px;
+    border-radius: 3px;
+}
+
+.icon_save_table_data:hover {
+    background-color: MediumSeaGreen; 
+}
+
+.icon_save_table_data:active {
+    background-color: ForestGreen; 
+}
+
+.filters_area {
+    margin: 0px 0px 1px 0px;
+    background-color: PaleVioletRed;
+}
+
+.widget_cell_grid_div_label {
+    background-color: white; 
+    border-radius: 5px; 
+    text-align: center;
+    padding-bottom: 1px;
+    height: 200px;
+    padding-top: 60px;
+}
+
+.widget_cell_grid_div_label:hover {
+    background-color: rgb(250, 255, 255);
+}
+
+.widget_cell_grid_div_graph {
+    border-radius: 5px; 
+    background-color: white;
+    text-align: center;
+    padding: 2px;
+}
+
+.widget_cell_grid_div_table {
+    /* background-color: DarkSlateGray;  */
+    background-color: white;
+    border-radius: 5px; 
+    text-align: center;
+    padding: 5px;
+}
+
+.widget_cell_grid {
+    padding: 5px;
+}
+
+
+.filters_area {
+    background-color: White;
+}
+
+/* .filter_label {
+    font-size: 12px;
+    font-weight: bold;
+} */
+
+.filter_dropdown .Select-control {
+    background-color: White !important;
+    color:white;
+  }
+  
+.filter_dropdown .Select-menu-outer {
+    background-color: White;
+    color: black;
+}
+
+.DateRangePickerInput {
+    border: 1px solid LightGray;
+    border-radius: 3px;
+    height: 35px;
+    width: 355px;
+}
+
+.DateRangePickerInput:active {
+    width: 340px;
+}
+
+.DateInput {
+    /* border: 1px solid gainsboro; */
+    border-radius: 3px;
+    height: 33px;
+    width: 140px;
+}
+
+.DateInput_input {
+    /* border: 1px solid gainsboro; */
+    border-radius: 3px;
+    height: 33px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    color: DimGray;
+    width: 140px;
+}
+
+.modal-dialog {
+    max-width: 1000px;
+}
+
+
+
+/* changes the text color of input box */
+/* .filter_dropdown .Select-value-label {
+    color: rgb(37, 224, 37) !important;
+} */
