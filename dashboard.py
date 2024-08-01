@@ -48,7 +48,7 @@ BNT_SAVE_TABLE_DATA = 0 # хранение кол-ва кликов на кно�
 ax_msg, ay_msg = [], []  # массивы хранения кол-ва пользователей для виджета scatter
 
 #  Подключение к базе данных
-conn = dfl.get_db_connect()
+# conn = dfl.get_db_connect()
 
 #  Создание dash-приложения
 server = Flask(__name__)
@@ -81,7 +81,7 @@ def display_page(pathname):
             #  ОБЛАСТЬ ВИДЖЕТОВ С ДАННЫМИ (ОСНОВНОЙ КОНТЕНТ ДАШБОРДА)
             dbc.Row([ 
                 dbc.Col( widgets_area, style={'backgroundColor': 'GhostWhite', 'padding': '0'}, width=12),
-                dcc.Interval( id='interval_component', n_intervals=0)   #  Компонент для периодического обновления данных
+                dcc.Interval( id='interval_component', n_intervals=0 )   #  Компонент для периодического обновления данных
                 ], style={'margin': '2px'})
             ])
 
@@ -197,7 +197,7 @@ def update_data(filter_values_list, filter_start_date_list, filter_end_date_list
                 select = select.replace('dashboard_filter_string', '')
             ###############################################################################
 
-        df[s] = dfl.get_db_data_to_datafame(conn, select)
+        df[s] = dfl.get_db_data_to_datafame(select)
         df[s]['system_cnt'] = 1
 
     update_date = datetime.now().strftime('%d-%m-%Y %H:%M:%S')

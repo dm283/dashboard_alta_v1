@@ -25,38 +25,50 @@ COMPANY_NAME = config['content']['company_name']
 
 def get_db_connect():
   #  Подключение к базе данных, варианты для postres и ms-sql
-  print(DB_CONNECTION_STRING)
-  print('connect to database ..... ', end='')
+  print(f'connecting to database server [{DB_CONNECTION_STRING}] ... ', end='')
+
   try:
-    if DB_TYPE == '-p':
-      # postgre database
+    if DB_TYPE == '-p':  # postgre database
       if 'DSN=' in DB_CONNECTION_STRING:
         CONN = pyodbc.connect(DB_CONNECTION_STRING)
       else:
         CONN = psycopg2.connect(DB_CONNECTION_STRING)  
-    elif DB_TYPE == '-m':
-      # ms-sql database
+    elif DB_TYPE == '-m':  # ms-sql database
       CONN = pyodbc.connect(DB_CONNECTION_STRING)     
-    print('ok')
+    
+    status = 'ok'; result = CONN
+
   except(Exception) as err:
-    print('error database connection'); print(err)
-    sys.exit(1)
-  return CONN
+    status = 'error'; result = err
+
+  print(status)
+  return status, result
 
 
-def get_db_data_to_datafame(conn, select):
+def get_db_data_to_datafame(select):
     #  Загрузка из базы данных в pandas-датафрейм
     # df = pd.read_sql(select, conn)
     # return df
     err = 1
+
     while err:
+
       try:
-        print('reading from database...')
+        conn_status, conn_result = get_db_connect()
+        if conn_status == 'error':
+          raise Exception(conn_result)
+        elif conn_status == 'ok':
+          conn = conn_result
+
+        print(f'reading from database [{DB_NAME}] ... ', end='')
         df = pd.read_sql(select, conn)
+
         err = 0
-        print('reading from database -- ok')
+        print('ok')
+        conn.close()
+
       except Exception as ex:
-        print('reading from database -- error', ex)
+        print('error', ex)
 
         with open('logs/log.txt', 'a') as f:
           log_record = f'{datetime.now()} -- error -- {ex}\n\n'
@@ -64,10 +76,11 @@ def get_db_data_to_datafame(conn, select):
 
         time.sleep(5)
         err = 1
+
     return df
 
 
-def create_filter(f_type, name, placeholder, value, clearable, column, query, conn):
+def create_filter(f_type, name, placeholder, value, clearable, column, query):
     #  Создает объект фильтр
     if f_type == 'date_picker':
       data_filter = [html.Div(name, className='filter_label'),
@@ -77,7 +90,7 @@ def create_filter(f_type, name, placeholder, value, clearable, column, query, co
                             id={'type': 'filter_date', 'index': f'filter_{column}'}, ),
       ]
     else:
-      filter_values_list = get_db_data_to_datafame(conn, query)[column].to_list()
+      filter_values_list = get_db_data_to_datafame(query)[column].to_list()
       data_filter = [html.Div(name, className='filter_label'),
                       dcc.Dropdown(options=filter_values_list, value=value, placeholder=placeholder, clearable=clearable,
                           className='filter_dropdown', 
