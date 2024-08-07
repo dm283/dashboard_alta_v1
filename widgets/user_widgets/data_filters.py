@@ -1,10 +1,9 @@
 # FILTERS
-from functions_library import create_filter, get_db_connect, get_db_data_to_datafame, DB_NAME, DB_SCHEMA
+from functions_library import create_filter, DB_NAME, DB_SCHEMA
 
 import warnings
 warnings.filterwarnings('ignore')
 
-conn = get_db_connect()
 data_filter = {}
 
 
@@ -17,7 +16,7 @@ value = None
 clearable = True
 column = ''
 query = ''
-data_filter[id] = create_filter(f_type, name, placeholder, value, clearable, column, query, conn)
+data_filter[id] = create_filter(f_type, name, placeholder, value, clearable, column, query)
 
 
 # filter 1
@@ -29,7 +28,7 @@ value = None
 clearable = True
 column = ''
 query = ''
-data_filter[id] = create_filter(f_type, name, placeholder, value, clearable, column, query, conn)
+data_filter[id] = create_filter(f_type, name, placeholder, value, clearable, column, query)
 
 
 # filter 2
@@ -41,7 +40,7 @@ value = None
 clearable = True
 column = ''
 query = ''
-data_filter[id] = create_filter(f_type, name, placeholder, value, clearable, column, query, conn)
+data_filter[id] = create_filter(f_type, name, placeholder, value, clearable, column, query)
 
 
 # # filter 0
