@@ -37,7 +37,7 @@ try:
     ENTER_VIA_AUTH_PAGE = True    #  Флаг входа через страницу аутентификации
     USER = str()
 except FileNotFoundError:
-    USER = 'user1'
+    USER = 'all_tabs'
     ENTER_VIA_AUTH_PAGE = False
 
 if not os.path.exists('logs'):
